@@ -1,0 +1,452 @@
+import time, random, math,json, Dog_Profile, moves
+
+class CharacterBuilder:
+    Character = []
+    Stat_points = 150
+    name = ""
+    Type = ""
+    Attack = int()
+    Defence = int()
+    HP = int()
+    Speed = int()
+    Assignment_Choice = ""
+    weakest_subject = ""
+    def __init__(self, name):
+        self.name = name
+        self.Character = Character
+        self.Type = Type
+        self.Attack = Attack
+        self.Defence = Defence
+        self.HP = HP
+        self.Stat_points = Stat_points
+        self.Speed = Speed
+        self.Assignment_Choice = Assignment_Choice
+        self.weakest_subject = weakest_subject
+
+    def CharacterCustomisation(self,name,Attack,Defence,HP,Speed,Type,Character,Stat_points,weakest_subject):
+            name = input("Enter a name for your Character:")
+            name_check(name)
+            confirm = input("Is the name "+name+" ok?").lower()
+            while confirm != "yes" and confirm != "y":
+                name = input("Enter a name for your Character")
+                confirm = input("Is the name "+name+" ok?").lower()
+            print("You have been assigned 150 points to add to your charatcer whose stats are currently 0. You can distribute them among the stats, speed, attack, defence and hp")
+            print("-)Attack\nThis is a very important stat that determines how hard a companion, enemy or character can hit something or someone.\nThe higher the attack stat the higher their potential damage output within a battle.\n")
+            time.sleep(2)
+            print("-)Defence\nThis is a very important stat that determines how much damage a companion, enemy or character will sustain from an incoming attack.\nThe higher the defence stat the less damage that will be taken from attacks.\n")
+            time.sleep(2)
+            print("-)HP\nHP stands for hit points.\nThis is a very important stat that potentially determines how many hits/attacks that a companion, enemy or character will be able to take from an opponent.\nA higher the HP stat can possibly lead to surviving more hits from an enemy.\nHowever the number of hits that can be taken from an opponent can also rely on defence.\n")
+            time.sleep(2)
+            print("-)Speed\nSpeed will determine the order of attack each battle.\nThe user with the highest speed stat will go first in the battle, then the second then the third and then so on until everything has had a chance to attack and then the order repeats the next turn and the turn after until the battle is ended.\nThe higher the speed the faster the character will be and the more enemies the character will be able to out speed.\n")
+            time.sleep(8)
+            """Each Character will start off with 150 points to assign as shown stated above"""
+
+            def AttackStat(self,Stat_points,Attack):
+                attack_assignment_statement = "Enter the number of points that you would like to add to your character's attack stat. You have " + str(Stat_points) + " points left to assign"
+                Attack = input(attack_assignment_statement)
+                stat_name = "Attack"
+                try:
+                    Attack = int(Attack)
+                except ValueError:
+                    if ValueError:
+                        Attack = data_type_check(Attack, attack_assignment_statement, stat_name, Stat_points)
+                if Attack > 150:
+                    while Attack > Stat_points:
+                        Attack = int(input("Enter a valid value for your character's attack stat"))
+                        if Attack < 150:
+                            attack_assignment = ("Would you like to assign " + str(Attack) + " stat points to your character's attack stat?")
+                            check = input(attack_assignment)
+                            if check == "yes" or check == "y" or check == "yeah":
+                                print("Your character's attack stat is",Attack,".")
+                                return Attack
+                            else:
+                                AttackStat(self, Stat_points,Attack)
+                elif Attack == 150:
+                    check = input("You have assigned all your stat points to character's attack. Would you like to start again?").lower()
+                    if check == "yes" or check == "y" or check == "yeah":
+                        print("Starting again")
+                        print("   .")
+                        time.sleep(0.5)
+                        print("  ...")
+                        time.sleep(0.5)
+                        print(" .....")
+                        time.sleep(0.5)
+                        print(".......")
+                        AttackStat(self,Stat_points,Attack)
+                    else:
+                        print("Your character's attack stat is",Attack,".")
+                        return Attack
+                else:
+                    print("Your character's attack stat is",Attack,".")
+                return Attack
+
+
+            def DefenceStat(self, Stat_points,Defence):
+                defence_assignment_statement = "Enter the number of points that you would like to add to your character's defence stat. You have " + str(Stat_points) + " points left to assign"
+                Defence = input(defence_assignment_statement)
+                stat_name = "Defence"
+                try:
+                    Defence = int(Defence)
+                except ValueError:
+                    if ValueError:
+                        Defence = data_type_check(Defence, defence_assignment_statement, stat_name, Stat_points)
+                if Defence > Stat_points:
+                        while Defence > Stat_points:
+                            Defence = int(input("Enter a valid number of points for your character's defence stat"))
+                            if Defence < 150:
+                                defence_assignment = ("Would you like to assign " + str(Defence) + " stat points to your character's defence stat?")
+                                check = input(defence_assignment)
+                                if check == "yes" or check == "y" or check == "yeah":
+                                    print("Your character's defence stat is",Defence,".")
+                                    return Defence
+                                else:
+                                    DefenceStat(self, Stat_points,Defence)
+                elif Defence == Stat_points:
+                        check = input("You have assigned all your stat points to defence. Would you like to start again?").lower()
+                        if check == "yes" or check == "y" or check == "yeah":
+                            print("Starting again")
+                            print("   .")
+                            time.sleep(0.5)
+                            print("  ...")
+                            time.sleep(0.5)
+                            print(" .....")
+                            time.sleep(0.5)
+                            print(".......")
+                            DefenceStat(self,Stat_points,Defence)
+                        else:
+                            print("Your character's defence stat is",Defence,".")
+                            return Defence
+                else:
+                        print("Your character's defence stat is",Defence,".")
+                        return Defence
+
+            def HP_Stat(self, Stat_points,HP):
+                HP_assignment_statement = "Enter the number of points that you would like to add to your character's HP stat. You have " + str(Stat_points) + " points left to assign"
+                HP = input(HP_assignment_statement)
+                stat_name = "HP"
+                try:
+                    HP = int(HP)
+                except ValueError:
+                    if ValueError:
+                        HP = data_type_check(HP, HP_assignment_statement, stat_name, Stat_points)
+                if HP > Stat_points:
+                        while HP > Stat_points:
+                            HP = int(input("Enter a valid number of points for your character's HP stat"))
+                            if HP < 150:
+                                hp_assignment = ("Would you like to assign " + str(HP) + " stat points to your character's HP stat?")
+                                check = input(hp_assignment)
+                                if check == "yes" or check == "y" or check == "yeah":
+                                    print("Your character's HP is",HP + 100,".")
+                                    HP = HP + 100
+                                    return HP
+                                else:
+                                    HP_Stat(self, Stat_points,HP)
+                elif HP == Stat_points:
+                        check = input("You have assigned all your stat points to HP. Would you like to start again?").lower()
+                        if check == "yes" or check == "y" or check == "yeah":
+                            print("Starting again")
+                            print("   .")
+                            time.sleep(0.5)
+                            print("  ...")
+                            time.sleep(0.5)
+                            print(" .....")
+                            time.sleep(0.5)
+                            print(".......")
+                            HP_Stat(self,Stat_points,HP)
+                        else:
+                            print("Your character's HP is",HP + 100,".")
+                            HP = HP + 100
+                            return HP
+                else:
+                        print("Your character's HP is",HP + 100,".")
+                        HP = HP + 100
+                        return HP
+
+            def Speed_Stat(self, Stat_points,Speed):
+                speed_assignment_statement = "Enter the number of points that you would like to add to your characters speed stat. You have " + str(Stat_points) + " points left to assign"
+                Speed = input(speed_assignment_statement)
+                stat_name = "Attack"
+                try:
+                    Speed = int(Speed)
+                except ValueError:
+                    if ValueError:
+                        Speed = data_type_check(Speed, speed_assignment_statement, stat_name, Stat_points)
+                if Speed > Stat_points:
+                        while Speed > Stat_points:
+                            print("You only have "+Stat_points+" points left to assign")
+                            Speed = int(input("And finally, enter a valid number of points for your character's speed stat"))
+                            if Speed < 150:
+                                speed_assignment = ("Would you like to assign " + str(Speed) + " stat points to your character's speed stat?")
+                                check = input(speed_assignment)
+                                if check == "yes" or check == "y" or check == "yeah":
+                                    print("Your character's speed is",Speed,".")
+                                    return Speed
+                                else:
+                                    Speed_Stat(self, Stat_points,Speed)
+
+                else:
+                        print("Your character's speed is",Speed,".")
+                        return Speed
+            def RandomAttack(self,Stat_points,Attack):
+                Attack = random.randint(0,150)
+                return Attack
+
+            def RandomDefence(self,Stat_points,Defence):
+                Defence = random.randint(0,Stat_points)
+                return Defence
+
+            def RandomHP(self,Stat_points,HP):
+                HP = (random.randint(0,Stat_points) + 100)
+                return HP
+
+            def Character_Type(self,Type):
+                print("")
+                print("Choose a type for your character")
+                print("The types are:")
+                print("A.) Psychic\nthis character type specialises in controling minds\nthis character type is weak against Sword Fighter\nthis character type is strong against Brawlers\n")
+                print("B.) Brawler\nthis character type specialises in the art of hand to hand combat\nthis character type is weak against Psychic\nthis character type is strong against Projectile-Based\n")
+                print("C.) Projectile Based\nthis character type specialises in artillery and projectiles\nthis character type is weak against Brawlers\nthis character type is strong against Sword Fighter\n")
+                print("D.) Sword Fighter\nthis character type specialises in the art of sword fighting\nthis character type is weak to Projectile Based\nthis character is strong against Psychics\n")
+                print("E.) All-Around Type\nthis character type is an enigma who specialises in none but has their own unique style of combat\nthis character type isn't weak or strong against any other character type\n")
+                Type = input("Choose a type for your character").lower()
+                if Type == "a" or Type == "b" or Type == "c" or Type == "d" or Type == "e":
+                    if Type == "a":
+                        Type = "Psychic"
+                    elif Type == "b":
+                        Type = "Brawler"
+                    elif Type == "c":
+                        Type = "Projectile Based"
+                    elif Type == "d":
+                        Type = "Sword Fighter"
+                    elif Type == "e":
+                        Type = "All-Around Type"
+                else:
+                    while Type != "a" and Type != "b" and Type != "c" and Type != "d" and Type != "e":
+                        print("")
+                        print("The types are:")
+                        print("A.) Psychic")
+                        print("B.) Brawler")
+                        print("C.) Projectile Based")
+                        print("D.) Sword Fighter")
+                        print("E.) All-Around Type")
+                        Type = input("Choose a type for your character").lower()
+                        if Type == "a" or Type == "b" or Type == "c" or Type == "d" or Type == "e":
+                            continue
+                if Type == "a":
+                    Type = "Psychic"
+                elif Type == "b":
+                    Type = "Brawler"
+                elif Type == "c":
+                    Type = "Projectile Based"
+                elif Type == "d":
+                    Type = "Sword Fighter"
+                elif Type == "e":
+                    Type = "All-Around Type"
+                print("Your have chosen the",Type,"Type.")
+                return Type
+
+
+            def Stat_Assignment_Choice(self,Attack,Defence,HP,Speed,Stat_points):
+                print("Would you like to choose your own stats or would you like to have random stats assigned to your character?")
+                print("A.) Choose own stats")
+                print("B.) Randomised stats")
+                print("C.) Optimal(Best) stats")
+                assign_choice = input("Would you like to choose your own stats (A) \nor would you like to have random stats assigned to your character(B)\nor would you like to have the most optimal stat distribution(C)?").lower()
+                while assign_choice != "a" and assign_choice != "b" and assign_choice != "c":
+                    assign_choice = input("You entered an invalid option. Would you like to choose your own stats (A) or would you like to have random stats assigned to your character(B) or would you like to have the most optimal stat distribution(C)? Please select a viable response (A or B or C).").lower()
+                return assign_choice
+            def Attack_Assignment(self,Stat_points,Attack):
+                    Attack = AttackStat(self,Stat_points,Attack)
+                    return Attack
+            def Random_Attack_Assignment(self,Stat_points,Attack):
+                    Attack = RandomAttack(self,Stat_points,Attack)
+                    return Attack
+            def Defence_Assignment(self,Stat_points,Defence):
+                    Defence = DefenceStat(self,Stat_points,Defence)
+                    return Defence
+            def Random_Defence_Assignment(self,Stat_points,Defence):
+                    Defence = RandomDefence(self,Stat_points,Defence)
+                    return Defence
+            def HP_Assignment(self,Stat_points,HP):
+                    HP = HP_Stat(self,Stat_points,HP)
+                    return HP
+            def Random_HP_Assignment(self,Stat_points,HP):
+                    HP =  RandomHP(self,Stat_points,HP)
+                    Stat_points = Stat_points - HP + 100
+                    return HP
+            def Speed_Assignment(self,Stat_points,Speed):
+                    Speed = Speed_Stat(self,Stat_points,Speed)
+                    return Speed
+            def Random_Speed_Assignment(self,Stat_points,Speed):
+                    Speed = Stat_points
+                    return Speed
+            def Character_Profile(self,name,Attack,Defence,HP,Speed,Type,Character,weakest_subject):
+                print("")
+                print("__________________________________________________________________________________")
+                print("Your Character's name is:")
+                print(name)
+                print("")
+                print("Your character's type is:")
+                print(Type,"Type")
+                print("")
+                print("Your character's stats are:")
+                print("HP:",HP)
+                print("Attack:",Attack)
+                print("Defence:",Defence)
+                print("Speed:",Speed)
+                print("Weakest subject:",weakest_subject)
+                print("")
+                start_again = input("Would you like to start again?").lower()
+                Character = [[name,HP,Attack,Defence,Speed,Type,weakest_subject]]
+                if start_again == "yes" or start_again == "y":
+                    newCharacter = CharacterBuilder(name).CharacterCustomisation(name,Attack,Defence,HP,Speed,Type,Character,Stat_points,weakest_subject)
+
+                else:
+                    Character = [[name,HP,Attack,Defence,Speed,Type,weakest_subject]]
+                    return Character
+                return Character
+
+            Assignment_Choice = Stat_Assignment_Choice(self,Attack,Defence,HP,Speed,Stat_points)
+            Stat_points = 150
+            if Assignment_Choice == "a":
+                Attack = Attack_Assignment(self,Stat_points,Attack)
+                Stat_points = Stat_points - int(Attack)
+                if Stat_points > 0:
+                    Defence = Defence_Assignment(self,Stat_points,Defence)
+                    Stat_points = Stat_points - int(Defence)
+                if Stat_points > 0:
+                    HP = HP_Assignment(self,Stat_points,HP)
+                    Stat_points = Stat_points - int(HP) + 100
+                if Stat_points > 0:
+                    Speed = Speed_Assignment(self,Stat_points,Speed)
+            elif Assignment_Choice == "b":
+                Attack = Random_Attack_Assignment(self,Stat_points,Attack)
+                Stat_points = Stat_points - int(Attack)
+                if Stat_points > 0:
+                    Defence = Random_Defence_Assignment(self,Stat_points,Defence)
+                    Stat_points = Stat_points - int(Defence)
+                if Stat_points > 0:
+                    HP = Random_HP_Assignment(self,Stat_points,HP)
+                    Stat_points = Stat_points - int(HP) + 100
+                if Stat_points > 0:
+                    Speed = Random_Speed_Assignment(self,Stat_points,Speed)
+            else:
+                Attack = 65
+                Defence = 75
+                HP = 105
+                Speed = 5
+            def get_attack(Attack):
+                return Attack
+            def get_defence(Defence):
+                return Defence
+            def get_HP(HP):
+                return HP
+            def get_Speed(Speed):
+                return Speed
+            Type = Character_Type(self,Type)
+            def setWeakest_subject(self,weakest_subject):
+                print("")
+                print("A.)Storage")
+                print("B.)Data Representation")
+                print("C.)Robust Programming")
+                print("D.)Systems Architecture")
+                print("E.)Networks")
+                weakest_subject = input("What is your weakest subject?").lower()
+                if weakest_subject == "a":
+                    weakest_subject = "Storage"
+                elif weakest_subject == "b":
+                    weakest_subject = "Data Representation"
+                elif weakest_subject == "c":
+                    weakest_subject = "Robust Programming"
+                elif weakest_subject == "d":
+                    weakest_subject = "Systems Architecture"
+                elif weakest_subject == "e":
+                    weakest_subject = "Networks"
+                else:
+                    while weakest_subject != "a" and weakest_subject != "b" and weakest_subject != "c" and weakest_subject != "d" and weakest_subject != "e":
+                        print("The topics are")
+                        print("")
+                        print("A.)Storage")
+                        print("B.)Data Representation")
+                        print("C.)Robust Programming")
+                        print("D.)Systems Architecture")
+                        print("E.)Networks")
+                        weakest_subject = input("Please select a valid subject").lower()
+                        continue
+                    if weakest_subject == "a":
+                        weakest_subject = "Storage"
+                    elif weakest_subject == "b":
+                        weakest_subject = "Data Representation"
+                    elif weakest_subject == "c":
+                        weakest_subject = "Robust Programming"
+                    elif weakest_subject == "d":
+                        weakest_subject = "Systems Architecture"
+                    elif weakest_subject == "e":
+                        weakest_subject = "Networks"
+                confirm_weakest_subject = input("You selected "+weakest_subject+" as your weakest subject is this correct?").lower()
+                if confirm_weakest_subject == "no" or confirm_weakest_subject == "n":
+                    weakest_subject = setWeakest_subject(self,weakest_subject)
+                    return weakest_subject
+                elif confirm_weakest_subject == "yes" or confirm_weakest_subject == "y":
+                    return weakest_subject
+            weakest_subject = setWeakest_subject(self,weakest_subject)
+            CharacterProfile = Character_Profile(self,name,Attack,Defence,HP,Speed,Type,Character,weakest_subject)
+            dog_profile = Dog_Profile.Dog.dog_profile(self, name, Attack, Defence, HP, Speed, Type)
+            dog_name = [dog_profile[0][0]]
+            CharacterProfile.append(dog_name)
+            place_holder = ["Place Holder"]
+            CharacterProfile.append(place_holder)
+            if Type == "Psychic":
+                moveset = moves.moves.psychic_moveset(self,name)
+            if Type == "Brawler":
+                moveset = moves.moves.brawler_moveset(self,name)
+            if Type == "Projectile Based":
+                moveset = moves.moves.Projectile_Based_moveset(self,name)
+            if Type == "Sword Fighter":
+                moveset = moves.moves.Sword_Fighter_Moveset(self,name)
+            if Type == "All-Around Type":
+                moveset = moves.moves.all_around_type_moveset(self,name)
+            """saving the moves"""
+            details = json.dumps(moveset)
+            name = name+"'s moves"
+            name = str(name)
+            file_name = (name)
+            open_file = open(file_name + ".txt" , "w")
+            open_file.write(details)
+            open_file.close()
+            """opening the file"""
+            find_file = open(name + ".txt" , "r")
+            save = find_file.read()
+            moveset = json.loads(save)
+            return CharacterProfile
+
+start = True
+Character = []
+Type = ""
+Stat_points = 0
+Attack = int()
+Defence = int()
+HP = int()
+Speed = int()
+Assignment_Choice = ""
+name = str()
+weakest_subject = ""
+def data_type_check(stat, statement, stat_name, Stat_points):
+    stat = input(statement)
+    try:
+        stat = int(stat)
+    except ValueError:
+        if ValueError:
+            print("Your value should be an integer")
+            stat = data_type_check(stat, statement, stat_name, Stat_points)
+    stat = int(stat)
+    return stat
+
+def name_check(name):
+    try:
+        with open(name + ".txt" , "r") as openfile:
+            print("Name Taken")
+            name = input("Sorry that name has already been taken. Enter a different name for your Character:")
+            name_check(name)
+    except IOError as x:
+        print("Name Available")
